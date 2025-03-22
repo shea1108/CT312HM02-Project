@@ -1,0 +1,9 @@
+export '../ui/DetailPage/detailScreen.dart';
+export '../ui/HomePage/homeScreen.dart';
+export 'ui/Login/loginScreen.dart';
+export '../ui/SignUp/signup_screen.dart';
+export '../ui/WatchPage/watchScreen.dart';
+export '../ui/Userpage/setting_screen.dart';
+export 'ui/Userpage/favorites_list.dart';
+export 'ui/Userpage/edit_profile.dart';
+export 'ui/Userpage/change_password.dart';
