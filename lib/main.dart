@@ -7,6 +7,7 @@ import 'models/auth_service.dart';
 import 'models/theme_manager.dart';
 import 'models/video_player.dart';
 import 'screen.dart';
+import 'splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context);
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Movie App',
       themeMode: themeProvider.themeMode,
       theme: ThemeData(
@@ -65,8 +67,10 @@ class MyApp extends StatelessWidget {
               color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ),
-      home: isLoggedIn ? HomeScreen() : Loginscreen(),
+       initialRoute: '/', // Màn hình khởi động
       routes: {
+        '/': (ctx) => SplashScreen(),
+        '/main': (ctx) => isLoggedIn ? HomeScreen() : Loginscreen(),
         '/login': (ctx) => Loginscreen(),
         '/signup': (ctx) => SignupScreen(),
       },

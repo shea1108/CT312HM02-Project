@@ -41,12 +41,12 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         }
 
         return Scaffold(
-          backgroundColor: Colors.black,
+          backgroundColor: Theme.of(context).colorScheme.onPrimary,
           appBar: AppBar(
-            backgroundColor: Theme.of(context).colorScheme.primary,
+            backgroundColor: Theme.of(context).colorScheme.onPrimary,
             title: Text(
               'Xem Phim',
-              style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+              style: TextStyle(color: Theme.of(context).colorScheme.primary),
             ),
           ),
           body: Column(
@@ -105,7 +105,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                               height: 150,
                               width: 40,
                               decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.7),
+                                color: Theme.of(context).colorScheme.onPrimary,
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: RotatedBox(
@@ -141,30 +141,31 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                 child: Text(
                   currentTitle,
                   style: TextStyle(
-                      color: Theme.of(context).colorScheme.onPrimary,
+                      color: Theme.of(context).colorScheme.primary,
                       fontSize: 18,
                       fontWeight: FontWeight.bold),
                 ),
               ),
               Expanded(
-                child: ListView.builder(
-                  itemCount: videoModel.episodes.length,
-                  itemBuilder: (context, index) {
-                    String videoId = videoModel.episodes[index]['id'];
-                    String videoFile = videoModel.episodes[index]['video'];
-                    String title = videoModel.episodes[index]['title'];
-                    return ListTile(
-                      title: Text(title,
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.onPrimary)),
-                      trailing: videoModel.currentVideo.contains(videoFile)
-                          ? Icon(Icons.play_arrow,
-                              color: Theme.of(context).colorScheme.onPrimary)
-                          : null,
-                      onTap: () => videoModel.changeVideo(videoId, videoFile),
-                    );
-                  },
-                ),
+                  child: ListView.builder(
+                    itemCount: videoModel.episodes.length,
+                    itemBuilder: (context, index) {
+                      String videoId = videoModel.episodes[index]['id'];
+                      String videoFile = videoModel.episodes[index]['video'];
+                      String title = videoModel.episodes[index]['title'];
+                      return ListTile(
+                        title: Text(
+                          title,
+                          style: Theme.of(context).textTheme.bodyLarge, 
+                        ),
+                        trailing: videoModel.currentVideo.contains(videoFile)
+                            ? Icon(Icons.play_arrow,
+                                color: Theme.of(context).colorScheme.primary)
+                            : null,
+                        onTap: () => videoModel.changeVideo(videoId, videoFile),
+                      );
+                    },
+                  ),
               ),
             ],
           ),

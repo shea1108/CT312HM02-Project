@@ -92,18 +92,10 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor:Theme.of(context).colorScheme.onPrimary,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            if (Navigator.canPop(context)) {
-              Navigator.pop(context);
-            }
-          },
-        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -123,22 +115,16 @@ class _DetailScreenState extends State<DetailScreen> {
 
             Text(
               widget.movie['title'],
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.bodyLarge
             ),
 
             const SizedBox(height: 10),
-
-            // Nội dung mô tả phim
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 widget.movie['desciption'],
                 style:
-                    TextStyle(color: Colors.white70, fontSize: 14, height: 1.5),
+                    Theme.of(context).textTheme.bodySmall,
                 textAlign: TextAlign.justify,
               ),
             ),
@@ -180,7 +166,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 IconButton(
                   icon: Icon(
                     isFavorite ? Icons.favorite : Icons.favorite_border,
-                    color: isFavorite ? Colors.red : Colors.white,
+                    color: isFavorite ? Colors.red : Colors.grey,
                   ),
                   onPressed: toggleFavorite,
                 ),
